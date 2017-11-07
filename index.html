@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Query Builder</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="css/style.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+<body ng-app="queryBuilder">
+	<div class="container" ng-controller="queryCtrl">
+		<div class="row">
+			<h1 class="title center">Query Builder Wordpress Users</h1>
+			<div class="col-md-12">
+				<ul>
+				    <li ng-repeat="user in users">
+				        {{"INSERT INTO `wp_users` (`user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES ('CRM-" + user.cargo + user.setor + "-SP', MD5('"+ user.cargo + user.setor +"'), 'crm-" + user.cargo + user.setor + "-SP', 'eurofarma@eurofarma.com', '', '2017-02-16 00:00:00', '', '0', 'Usuário Interno Eurofarma');"}} <br>
+				        {{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'nickname', 'CRM-" + user.cargo + user.setor + "-SP');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'first_name', 'Eurofarma');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'last_name', 'Interno');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'description', 'Cirurgia Geral');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'rich_editing', 'true');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'comment_shortcuts', 'false');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'admin_color', 'fresh');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'use_ssl', '0');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'show_admin_bar_front', 'true');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'wp_capabilities', 'a:1:{s:10:\"subscriber\";b:1;}');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'wp_user_level', '0');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'dismissed_wp_pointers', '');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), '_aceita_newsletter', 'true');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), '_cidade', 'So Paulo');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), '_estado', 'SP');"}}<br>
+						{{"INSERT INTO `wp_usermeta` (`user_id`, `meta_key`, `meta_value`) VALUES ((select id from `wp_users` order by id desc limit 1), 'session_tokens', '');"}} <br><br>
+				    </li>
+			    </ul>
+			</div>
+			<div class="col-md-12"></div>
+		</div>
+	</div>
+	<script src="js/script.js"></script>
+</body>
+</html>
